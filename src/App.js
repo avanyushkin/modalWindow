@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import basicImage from './img/basic-image.jpg'
 
 function App() {
+  const [flag, setFlag] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='model-menu'>
+        <button onClick = {() => setFlag(true)} class='model-menu-text'>
+          Open window
+        </button>
+        { flag && (
+            <div className='overlay'>
+              <div className='image-container'>
+                <button onClick = {() => setFlag(false)} className='close-bin'>
+                  ×
+                </button>
+                <img src={basicImage} alt='basic-image' className='basic-image' />
+              </div>
+            </div>
+          )}
+      </div>
+    </>
   );
 }
 
